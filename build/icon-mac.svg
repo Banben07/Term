@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024" width="1024" height="1024">
+  <!--
+    1024 canvas, artwork in the 824 pt Apple grid (100 pt inset).
+    No pre-drawn rounded rect — macOS applies the squircle.
+  -->
+  <defs>
+    <linearGradient id="tile" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#1b2130"/>
+      <stop offset="1" stop-color="#0b0d12"/>
+    </linearGradient>
+    <linearGradient id="beam" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#9dbaff"/>
+      <stop offset="1" stop-color="#6b94ff"/>
+    </linearGradient>
+  </defs>
+  <g transform="translate(100 100)">
+    <rect width="824" height="824" rx="184" fill="url(#tile)"/>
+    <path d="M225 254 L380 412 L225 570" fill="none" stroke="url(#beam)" stroke-width="74"
+          stroke-linecap="round" stroke-linejoin="round"/>
+    <rect x="428" y="499" width="190" height="70" rx="22" fill="#e6eaf2"/>
+    <g fill="#7aa2ff">
+      <circle cx="672" cy="267" r="27"/>
+      <circle cx="672" cy="367" r="27" opacity="0.68"/>
+      <circle cx="672" cy="467" r="27" opacity="0.42"/>
+    </g>
+  </g>
+</svg>

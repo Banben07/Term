@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Term</title>
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; style-src 'self'; img-src 'self' data:; script-src 'self'"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="titlebar">
+      <button type="button" class="back" id="back-btn" hidden>Hosts</button>
+      <img class="brand-mark" src="./assets/mark.svg" alt="" />
+      <div class="title" id="title">Term</div>
+      <div class="pills" id="pills"></div>
+      <button type="button" class="add" id="add-btn">New</button>
+    </header>
+
+    <main class="page" id="page">
+      <section class="hero">
+        <div>
+          <p class="eyebrow">Term</p>
+          <h1>Hosts</h1>
+          <p id="hero-sub">Open a ptyhub machine. Close it anytime from the card or the tab.</p>
+        </div>
+        <img class="hero-mark" src="./assets/mark.svg" alt="" />
+      </section>
+
+      <ul class="hosts" id="hosts"></ul>
+    </main>
+
+    <div class="modal" id="modal" hidden>
+      <form class="sheet" id="form">
+        <h2 id="form-title">New host</h2>
+        <label>
+          Name
+          <input id="field-name" name="name" type="text" maxlength="80" placeholder="super" autocomplete="off" />
+        </label>
+        <label>
+          URL
+          <input
+            id="field-url"
+            name="url"
+            type="url"
+            placeholder="http://127.0.0.1:7420"
+            autocomplete="off"
+            spellcheck="false"
+          />
+        </label>
+        <p class="hint">A <code>ptyhub link</code> URL works too.</p>
+        <p class="form-error" id="form-error" hidden></p>
+        <div class="row">
+          <button type="submit" class="btn primary">Save</button>
+          <button type="button" class="btn" id="form-cancel">Cancel</button>
+        </div>
+      </form>
+    </div>
+
+    <script src="./app.js"></script>
+  </body>
+</html>

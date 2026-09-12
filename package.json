@@ -1,0 +1,42 @@
+{
+  "name": "term",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "productName": "Term",
+  "description": "Term — desktop client for ptyhub servers",
+  "author": "sakamoto",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Banben07/Term.git"
+  },
+  "main": "main.mjs",
+  "scripts": {
+    "start": "electron .",
+    "icons": "node scripts/make-icns.mjs",
+    "pack": "npm run icons && electron-builder --mac --dir"
+  },
+  "build": {
+    "appId": "app.ptyhub.term",
+    "productName": "Term",
+    "files": [
+      "main.mjs",
+      "preload.cjs",
+      "renderer/**/*"
+    ],
+    "directories": {
+      "output": "dist"
+    },
+    "mac": {
+      "icon": "build/icon.icns",
+      "category": "public.app-category.developer-tools",
+      "target": ["dir"],
+      "identity": null
+    }
+  },
+  "devDependencies": {
+    "electron": "^37.4.0",
+    "electron-builder": "^26.0.12"
+  }
+}
