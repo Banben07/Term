@@ -128,6 +128,23 @@ function layoutView() {
   view.setAutoResize({ width: true, height: true });
 }
 
+function focusActive() {
+  if (!windowAlive()) return;
+  if (visibleId) {
+    const view = views.get(visibleId);
+    if (view && !view.webContents.isDestroyed()) {
+      view.webContents.focus();
+      return;
+    }
+  }
+  if (!win.webContents.isDestroyed()) win.webContents.focus();
+}
+
+function scheduleFocus() {
+  // Cmd+Tab focuses the frame first; wait a tick so the BrowserView wins.
+  setImmediate(focusActive);
+}
+
 function detachView(view) {
   if (!windowAlive() || !view) return;
   try {
@@ -154,6 +171,7 @@ function showView(id) {
   visibleId = id;
   layoutView();
   emit('session', id, 'connected');
+  scheduleFocus();
 }
 
 function closeView(id, quitting = false) {
@@ -244,6 +262,10 @@ function createWindow() {
     persist();
   });
   win.on('move', persist);
+  win.on('focus', scheduleFocus);
+  win.webContents.on('focus', () => {
+    if (visibleId) scheduleFocus();
+  });
   win.on('close', () => {
     persist();
     closeAllViews();
@@ -324,6 +346,10 @@ app.whenReady().then(() => {
   createWindow();
   app.on('activate', () => {
     if (BrowserWindow.getAllWindows().length === 0) createWindow();
+    else scheduleFocus();
+  });
+  app.on('browser-window-focus', (_event, focused) => {
+    if (focused === win) scheduleFocus();
   });
 });
 
