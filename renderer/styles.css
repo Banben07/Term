@@ -463,9 +463,49 @@ button {
   padding: 0 14px;
 }
 
+.session-frame {
+  display: none;
+  position: fixed;
+  inset: var(--titlebar) 0 0;
+  width: 100%;
+  height: calc(100% - var(--titlebar));
+  border: 0;
+  background: var(--base);
+  z-index: 2;
+}
+
 body.session .page,
 body.session .modal {
   visibility: hidden;
+}
+
+body.native {
+  --titlebar-offset: calc(var(--titlebar) + env(safe-area-inset-top, 0px));
+}
+
+body.native .titlebar {
+  padding-left: 14px;
+  padding-right: max(14px, env(safe-area-inset-right, 0px));
+  padding-top: env(safe-area-inset-top, 0px);
+  height: var(--titlebar-offset);
+}
+
+body.native .page {
+  margin-top: var(--titlebar-offset);
+  height: calc(100% - var(--titlebar-offset));
+}
+
+body.native .modal,
+body.native .session-frame {
+  inset: var(--titlebar-offset) 0 0;
+}
+
+body.native .session-frame {
+  height: calc(100% - var(--titlebar-offset));
+}
+
+body.native.session .session-frame {
+  display: block;
 }
 
 [hidden] {

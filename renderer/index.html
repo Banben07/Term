@@ -4,8 +4,12 @@
     <meta charset="utf-8" />
     <title>Term</title>
     <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
+    <meta
       http-equiv="Content-Security-Policy"
-      content="default-src 'self'; style-src 'self'; img-src 'self' data:; script-src 'self'"
+      content="default-src 'self'; style-src 'self'; img-src 'self' data:; script-src 'self'; frame-src http: https:; connect-src 'self' capacitor: https://localhost http://localhost"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -58,6 +62,9 @@
       </form>
     </div>
 
+    <iframe id="session-frame" class="session-frame" title="Session"></iframe>
+
+    <script src="./native.js"></script>
     <script src="./app.js"></script>
   </body>
 </html>

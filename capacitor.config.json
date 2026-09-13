@@ -1,0 +1,12 @@
+{
+  "appId": "app.ptyhub.term",
+  "appName": "Term",
+  "webDir": "renderer",
+  "android": {
+    "allowMixedContent": true
+  },
+  "server": {
+    "cleartext": true,
+    "allowNavigation": ["http://*", "https://*"]
+  }
+}
